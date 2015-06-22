@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<definitions name="AritmeticaServicio"
+    targetNamespace="urn:Aritmetica"
+     xmlns:tns="urn:Aritmetica"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns="http://schemas.xmlsoap.org/wsdl/">
+ 
+  <message name="holaPeticion">
+    <part name="a" type="xsd:string" />
+  </message>
+ 
+  <message name="holaRespuesta">
+    <part name="respuesta" type="xsd:string" />
+  </message>
+ 
+  <portType name="AritmeticaPort">
+    <operation name="hola">
+      <input message="tns:holaPeticion" />
+      <output message="tns:holaRespuesta" />
+    </operation>
+  </portType>
+ 
+  <binding name="AritmeticaBinding" type="tns:AritmeticaPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="hola">
+        <soap:operation soapAction="urn:Aritmetica#hola" />
+        <input>
+          <soap:body use="encoded" namespace="urn:Aritmetica"
+                     encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        </input>
+        <output>
+          <soap:body use="encoded" namespace="urn:Aritmetica"
+                     encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        </output>
+    </operation>
+    
+  </binding>
+ 
+  <service name="AritmeticaServicio">
+    <port name="AritmeticaPort" binding="tns:AritmeticaBinding">
+      <soap:address location="http://localhost/estcorp/index.php/servicio/servidor" />
+    </port>
+  </service>
+</definitions>
