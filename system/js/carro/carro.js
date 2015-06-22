@@ -136,8 +136,9 @@ function menuLateral(){
 	for(var i = 0; i < Esq_menu.length; i++ ){
         var img = document.createElement("img");
         img.src=sImg+"/categoria/medio/"+Esq_menu[i].imag;
+        img.className = "img-responsive";
         
-        //img.style.cssText ="width:160px";
+        img.style.cssText ="padding:10px;";
 		//alert('Oid: ' + Esq_menu[i].oid + ' cat: ' + Esq_menu[i].nomb);
 		var sli = document.createElement("li");
 		ul.appendChild(sli);
