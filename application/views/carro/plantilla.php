@@ -17,16 +17,16 @@
             <?php $this -> load -> view("carro/incluir/menu"); ?>
             <section>
             <br>
-                <div class="container"style="width: 88%;">
+                <div class=""style="">
                     <div class="row">
                         
-                        <div id="estcorp-contenedor-medio-productos">
+                        <div id="">
                             <?php
                             if(isset($cuerpo)) $this -> load -> view($cuerpo);
                             else{
                             ?>
                             <div id="ver_categorias">
-                                <div class="container" style="position: relative;float: left;width: 100%;">
+                                <div class="">
     	                            <span class="top-label">
                                         </span>
                                     <div class="content-area">

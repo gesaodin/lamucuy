@@ -5,22 +5,17 @@
 	border:2px dotted #fff;
 	float:left;
 	margin:0px;
-	padding:2px;
+	padding-left:10px;
 	width: 90%;
 	height: auto;
 	color:#444;
 }
+
 .product:hover
 {
 	border:2px dotted #e8e8e8;
 }
 
-.product div{
-	background:transparent;
-	height:70px;
-	max-height:90px;
-	text-align:right;
-}
 .product b{
 	font-size:15px;
 	color: #00ded0;
@@ -28,11 +23,68 @@
 .product span{
     font-size:9px;
 }
+.obj_cant{
+    background:#fff; width:80px;height:60px;font-size:45px;float:left;
+    vertical-align: middle;
+}
+.product_img{
+    width: 80px;
+    width: 60px;
+    margin-left: 0px;margin-bottom:2px;float:left;
+}
 
 	
 .product img{
 	cursor:move;
 	margin-left: 3px;
+}
+
+.product_det{
+    background:trasparent;
+    padding:0px 10px 0px 10px;
+    float:left;
+    width:90px;
+}
+.product_cant{
+    width: 40%;
+    vertical-align:middle;
+    float: left;
+    background:transparent;
+}
+
+@media (max-width: 340px) {
+    .obj_cant{
+        width:60px;height:60px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .product{
+        width: 100%;
+    }
+    .product_img{
+        width: 20%;
+        //float: left;
+    }
+    .product_cant{
+        width: 40%;
+        vertical-algn:middle;
+        float: left;
+        background:transparent;float:left;
+    }
+    .product_det{
+        width: 30%;
+        float: left;
+        background:trasparent;
+    }
+    .container{
+        width: 100%;
+    }
+
+    .main-container{
+        width: 100%;
+    }
 }
 
 p.descr{
