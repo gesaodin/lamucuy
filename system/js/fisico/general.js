@@ -1,4 +1,4 @@
-var sUrl = 'http://' + window.location.hostname + '/almacen';
+var sUrl = 'http://' + window.location.hostname + '/lamucuy';
 var sUrlP = sUrl + '/index.php/fisico/almacen/';
 var sImg = sUrl + '/system/img/';
 

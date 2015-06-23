@@ -48,7 +48,7 @@
 
 
 
-			<?php $this -> load -> view("principal/incluir/pie"); ?>
+			<?php //$this -> load -> view("principal/incluir/pie"); ?>
 
 		</body>
 	</html>

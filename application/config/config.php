@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://200.82.195.242/almacen';
+$config['base_url']	= 'http://192.168.1.116/lamucuy';
 
 /*
 |--------------------------------------------------------------------------
