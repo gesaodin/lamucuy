@@ -36,7 +36,7 @@ class MImagen extends CI_Model {
         //$t = $this -> crearThumbnail2($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
         //$t2 = $this -> crearThumbnail2($this->ruta, $this->directorio . '/medio/' . $this->nombre, 270, 200);
         //$t  = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
-        $t2 = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/medio/' . $this->nombre, 270, 200);
+        $t2 = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/medio/' . $this->nombre, 300, 101);
         $res['respuesta'] = $arr;
         $res['mensaje'] = $t2;
         return $res;
@@ -158,7 +158,7 @@ class MImagen extends CI_Model {
         }
         $resultado [0] = $imagen;
         $resultado [1] = $info ["mime"];
-        return $resultado;
+        return $resultado;crearThumbnailRecortado;
     }
     function guardarImagen($imagen, $nombre, $tipo) {
         switch ($tipo) {
