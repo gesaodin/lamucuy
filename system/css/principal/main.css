@@ -9,7 +9,7 @@
 body {
   font-family: 'verdana', sans-serif;
   position: relative;
-  overflow: hidden;
+  overflow:auto;
   height: 100%;
 
 }

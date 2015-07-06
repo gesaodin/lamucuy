@@ -22,7 +22,7 @@ font-size:12px;
 				foreach($lista[0]['rs'] as $cla => $valor){
 					echo 
 					'<div class="product" id="'. $valor->oidp . $valor->seri. $valor->lote . $valor->ubic .'" ><div class="row">' .
-						 '<img src="'.__IMG__.'productos/'.$valor->imag.'"
+						 '<img src="'.__IMG__.'productos/medio/'.$valor->imag.'"
     					alt="'.htmlspecialchars($valor->observacion).'" class="product_img"  />
         				<div class ="product_det" id="det'. $valor->oidp . $valor->seri. $valor->lote . $valor->ubic .'" ></div>' .
 
