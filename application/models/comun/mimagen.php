@@ -34,7 +34,7 @@ class MImagen extends CI_Model {
             $arr = TRUE;
         }
         if($tipo == 0) $t2 = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/medio/' . $this->nombre, 300, 101);
-        if($tipo == 1) $t2 = $this -> crearThumbnail2($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 80, 60);
+        if($tipo == 1) $t2 = $this -> crearThumbnail2($this->ruta, $this->directorio . '/medio/' . $this->nombre, 80, 60);
         //$t = $this -> crearThumbnail2($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
         //$t2 = $this -> crearThumbnail2($this->ruta, $this->directorio . '/medio/' . $this->nombre, 270, 200);
         //$t  = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
