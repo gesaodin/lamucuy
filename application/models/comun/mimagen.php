@@ -26,7 +26,7 @@ class MImagen extends CI_Model {
     }
     function evaluar() {
     }
-    function salvar(tipo) {
+    function salvar($tipo) {
         $this->ruta = $this->directorio . '/' . $this->nombre;
         if (! move_uploaded_file ( $this->temporal, $this->ruta )) {
             $arr = FALSE;
