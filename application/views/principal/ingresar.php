@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html >
+
   <head>
-    <meta charset="UTF-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>ACCESO DE ADMINISTRADOR</title>
+      <link href="<?php echo __CSS__ ?>login/style.css" rel="stylesheet"  type="text/css">
+      <script type="text/javascript" src="<?php echo __JSVIEW__ ?>jquery/jquery-1.10.2.js"></script>
+      <script type="text/javascript" src="<?php echo __JSVIEW__ ?>login/modernizr.custom.63321.js"></script>
 
-
-    <title>Chocolates La Mucuy</title>
-    
-    
- <link href="<?php echo __CSS__ ?>principal/style.css" rel="stylesheet">
-
-    
-    
-    
   </head>
+<body>
+<div class="container">
+    <header>
 
-  <body style="background: #594839;">
+        <h1>
+            <strong>Control De Acceso</strong>
+        </h1>
+        <h2>Bienvenido</h2>
+        <div class="support-note">
+            <span class="note-ie">Ingrese usuario y clave</span>
+        </div>
 
-    <div class="wrapper">
-	<div class="container">
-		<h1>Bienvenido</h1>
-		
-		<form class="form" name='frm' action='<?php echo base_url()?>index.php/principal/validarUsuario'  method='POST'>
-			<input type="text" name="txtUsuario" class="form-control" required="required" placeholder="Usuario">
-			<input type="password" name="txtClave" class="form-control" required="required" placeholder="Clave">
-			<button type="submit" name="submit" onclick="document.frm.submit();" id="submit_btn2" value="Ingresar">Ingresar</button>
-		</form>
-	</div>
-	
-	<ul class="bg-bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
+    </header>
+
+    <section class="main">
+        <form class="form-1" action='<?php echo base_url()?>index.php/principal/validarUsuario'  method='POST'>
+            <p class="field">
+                <input type="text" name="txtUsuario" id="txtUsuario" placeholder="USUARIO"> <i
+                    class="icon-user icon-large"></i>
+            </p>
+            <p class="field">
+                <input type="password" name="txtClave" id="txtClave" placeholder="CLAVE"> <i
+                    class="icon-lock icon-large"></i>
+            </p>
+            <p class="submit">
+                <button type="submit" name="submit">
+                    <i class="icon-arrow-right icon-large"></i>
+                </button>
+            </p>
+        </form>
+    </section>
 </div>
-  </body>
-</html>
+</BODY>
