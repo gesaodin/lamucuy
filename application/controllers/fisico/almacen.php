@@ -72,7 +72,7 @@ class Almacen extends CI_Controller {
     $this -> Categoria -> nombre = $_POST['nombre'];
     $this -> Categoria -> imagen = $_FILES['imagen']['name'];
     $data = $this -> Categoria -> registrar();
-    $varlor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/categoria') -> salvar();
+    $varlor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/categoria') -> salvar(0);
     
     echo $data[0]['msj'];
   }
@@ -150,7 +150,7 @@ class Almacen extends CI_Controller {
     $this -> MaestroProducto -> metodo = $_POST['metodo'];
     $this -> MaestroProducto -> minimo = $_POST['minimo'];
     $this -> MaestroProducto -> costoProduccion = $_POST['costo'];
-    $varlor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/productos') -> salvar();
+    $varlor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/productos') -> salvar(1);
     $this -> MaestroProducto -> nombreImagen = $_FILES['imagen']['name'];
     $arr = $this -> MaestroProducto -> registrar();
 	
