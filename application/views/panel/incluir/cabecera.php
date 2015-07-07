@@ -8,8 +8,8 @@
     <link href="<?php echo __CSS__ ?>defecto/jquery-ui-1.10.4.custom.min.css" rel="stylesheet"  type="text/css">
 
     <link href="<?php echo __CSS__ ?>administracion/estilo.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo __JSVIEW__ ?>jquery/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
     <script type="text/javascript" src="<?php echo __JSVIEW__ ?>tgrid/editar.js"></script>
     <script type="text/javascript" src="<?php echo __JSVIEW__ ?>tgrid/func.js"></script>
