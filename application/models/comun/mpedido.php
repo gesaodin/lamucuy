@@ -309,6 +309,7 @@ class MPedido extends CI_Model {
 		);
 		return $arr;
 	}
+
 	function listaPedidosOrden($orden) {
 		$query = "SELECT pedido.orde, producto.nomb as nombre,producto.obse as detalle, pedido.prec, pedido.cant,(cant*prec)as total FROM pedido 
 	LEFT JOIN producto ON pedido.oidp=producto.oid 

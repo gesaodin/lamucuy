@@ -27,7 +27,7 @@ class Panel extends CI_Controller {
 
 	function index() {
 		$data['js'] = 'principal';
-		$this -> load -> view('panel/principal', $data);
+		$this -> load -> view('panel2/panel', $data);
 	}
 
 	/*
@@ -100,6 +100,25 @@ class Panel extends CI_Controller {
 		//echo "llega";
 	}
 
+    function listar_pedidos_pendientes2() {
+        $this -> load -> model('comun/mpedido', 'MPedido');
+        $estatus = $_POST['estatus'];
+        $consulta = $this -> MPedido -> listarPorAdmin($estatus);
+        $obj = array();
+        if ($consulta[0]['cant'] != 0) {
+            $cab = array("#Pedido","Nombre","Telefono","Monto","Usuario");
+            $cuerpo = array();
+            foreach ($consulta[0]['rs'] as $filas) {
+                $nom = $filas -> nomb . ' ' . $filas -> apel;
+                $cuerpo[] = array($filas -> orde, $nom, $filas -> telf . '|' . $filas -> corr,number_format($filas -> total, 2, ",", "."), $filas -> oidu);
+            }
+            $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
+        } else
+            $obj['resp'] = 0;
+        echo json_encode($obj);
+        //echo "llega";
+    }
+
 	function listar_pedidos_cliente() {
 		$this -> load -> model('comun/mdeposito', 'MDeposito');
 		$estatus = $_POST['estatus'];
@@ -152,6 +171,25 @@ class Panel extends CI_Controller {
 
 	}
 
+    function Detalle_Orden2() {
+        $datos = json_decode($_POST['datos'],true);
+        $this -> load -> model('comun/mpedido', 'MPedido');
+        $consulta = $this -> MPedido -> listaPedidosOrden($datos[0]);
+        $obj = array();
+        if ($consulta[0]['cant'] != 0) {
+            $cab = array("Cantidad","Producto","Detalle","Precio","Total");
+            $cuerpo = array();
+            foreach ($consulta[0]['rs'] as $filas) {
+                $cuerpo[] = array($filas -> cant,$filas -> nombre,$filas -> detalle,$filas -> prec,$filas -> total);
+
+            }
+            $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
+        } else
+            $obj['resp'] = 0;
+        echo json_encode($obj);
+
+    }
+
 	function Aceptar_Deposito() {
 		$this -> load -> model('comun/mpedido', 'MPedido');
 		$this -> load -> model('comun/mdeposito', 'MDeposito');
@@ -162,6 +200,17 @@ class Panel extends CI_Controller {
 		$this -> MDeposito -> registrar($datos);
 		echo "Se proceso con exito";
 	}
+
+    function Aceptar_Deposito2() {
+        $this -> load -> model('comun/mpedido', 'MPedido');
+        //$this -> load -> model('comun/mdeposito', 'MDeposito');
+        $datos = json_decode($_POST['datos'], true);
+        //print("<pre>");
+        //print_R($datos);
+        $this -> MPedido -> cambiarEstatusPedido($datos[0], 1);
+        //$this -> MDeposito -> registrar($datos);
+        echo "Se proceso con exito";
+    }
 
 	function Aceptar_Procesando() {
 		$this -> load -> model('comun/mpedido', 'MPedido');
