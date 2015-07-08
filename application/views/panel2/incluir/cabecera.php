@@ -17,6 +17,7 @@
         $(function () {
             $('.button-collapse').sideNav({
                     menuWidth: 300, // Default is 240
+                    //edge: 'right',
                     closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
                 }
             );
@@ -28,21 +29,24 @@
 <div class="row" >
     <div class="col-lg-12" > <!-- Note that "m4 l3" was added -->
         <nav class="brown darken-2">
-            <ul class="left hide-on-med-and-down ">
-                <li><a href="<?php echo site_url("panel/panel/index") ?>">Inicio</a></li>
-                <li><a href="<?php echo site_url("panel/panel/verUsuarios") ?>">Galeria de Productos</a></li>
-                <li><a href="<?php echo site_url("panel/panel/agregarGaleria") ?>">Galeria de Productos</a></li>
-                <li><a href="<?php echo site_url("panel/panel/reporte") ?>">Reportes</a></li>
-                <li><a href="<?php echo site_url("panel/panel/cerrar") ?>">Salir</a></li>
-            </ul>
-            <ul id="slide-out" class="side-nav">TITULO
-                <li><a href="<?php echo site_url("panel/panel/index") ?>">Inicio</a></li>
-                <li><a href="<?php echo site_url("panel/panel/verUsuarios") ?>">Galeria de Productos</a></li>
-                <li><a href="<?php echo site_url("panel/panel/agregarGaleria") ?>">Galeria de Productos</a></li>
-                <li><a href="<?php echo site_url("panel/panel/reporte") ?>">Reportes</a></li>
-                <li><a href="<?php echo site_url("panel/panel/cerrar") ?>">Salir</a></li>
-            </ul>
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+            <div class="nav-wrapper">
+                <a class="brand-logo right" href="#">Chocolates La Mucuy</a>
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="<?php echo site_url("panel/panel/index") ?>">Inicio</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/verUsuarios") ?>">Galeria de Productos</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/agregarGaleria") ?>">Galeria de Productos</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/reporte") ?>">Reportes</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/cerrar") ?>">Salir</a></li>
+                </ul>
+                <ul id="slide-out" class="side-nav">TITULO
+                    <li><a href="<?php echo site_url("panel/panel/index") ?>">Inicio</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/verUsuarios") ?>">Galeria de Productos</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/agregarGaleria") ?>">Galeria de Productos</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/reporte") ?>">Reportes</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/cerrar") ?>">Salir</a></li>
+                </ul>
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+            </div>
         </nav>
     </div>
 </div>
