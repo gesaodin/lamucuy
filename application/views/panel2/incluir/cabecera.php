@@ -30,20 +30,20 @@
     <div class="col-lg-12" > <!-- Note that "m4 l3" was added -->
         <nav class="brown darken-2">
             <div class="nav-wrapper">
-                <a class="brand-logo right" href="#">Chocolates La Mucuy</a>
-                <ul class="left hide-on-med-and-down">
-                    <li><a href="<?php echo site_url("panel/panel/index") ?>">Inicio</a></li>
-                    <li><a href="<?php echo site_url("panel/panel/verUsuarios") ?>">Galeria de Productos</a></li>
+                <a class="brand-logo left" href="#">Chocolates La Mucuy</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="<?php echo site_url("panel/panel/index") ?>"><i class="mdi-action-home tiny"></i></a></li>
+                    <!--<li><a href="<?php echo site_url("panel/panel/verUsuarios") ?>">Control De Usuario</a></li>
                     <li><a href="<?php echo site_url("panel/panel/agregarGaleria") ?>">Galeria de Productos</a></li>
-                    <li><a href="<?php echo site_url("panel/panel/reporte") ?>">Reportes</a></li>
-                    <li><a href="<?php echo site_url("panel/panel/cerrar") ?>">Salir</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/reporte") ?>">Reportes</a></li>!-->
+                    <li><a href="<?php echo site_url("panel/panel/cerrar") ?>"><i class="mdi-action-exit-to-app tiny"></i></a></li>
                 </ul>
                 <ul id="slide-out" class="side-nav">TITULO
-                    <li><a href="<?php echo site_url("panel/panel/index") ?>">Inicio</a></li>
-                    <li><a href="<?php echo site_url("panel/panel/verUsuarios") ?>">Galeria de Productos</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/index") ?>"><i class="mdi-action-home tiny"></i></a></li>
+                    <!--<li><a href="<?php echo site_url("panel/panel/verUsuarios") ?>">Control De Usuarios</a></li>
                     <li><a href="<?php echo site_url("panel/panel/agregarGaleria") ?>">Galeria de Productos</a></li>
-                    <li><a href="<?php echo site_url("panel/panel/reporte") ?>">Reportes</a></li>
-                    <li><a href="<?php echo site_url("panel/panel/cerrar") ?>">Salir</a></li>
+                    <li><a href="<?php echo site_url("panel/panel/reporte") ?>">Reportes</a></li>!-->
+                    <li><a href="<?php echo site_url("panel/panel/cerrar") ?>"><i class="mdi-action-exit-to-app tiny"></i></a></li>
                 </ul>
                 <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
