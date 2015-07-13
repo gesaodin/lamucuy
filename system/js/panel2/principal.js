@@ -6,7 +6,7 @@ $(function() {
         'clase':"light-green",
         'oculto':[5],
         'detalle': {'tipo': 'dtgrid', "origen": datos5, 'config': {"titulo":"Detalle"}, 'parametro': [1]},
-        'accion':[{'ejecuta':sUrlP+"Aceptar_Deposito2",'parametro':[1],"texto":"Procesar",'tipo':"php","ocultar":true}]
+        'accion':[{'ejecuta':sUrlP+"Aceptar_Deposito2",'parametro':[1],"texto":"Procesar",'tipo':"php","ocultar":true,"clase":"mdi-content-mail"}]
     });
 
 });
