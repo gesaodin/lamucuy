@@ -3,7 +3,7 @@ $(function() {
     var datos5 = {'tipoOrigen': 'php', 'rutaObjeto': sUrlP+'Detalle_Orden2'};
     $("#reporte").dtgrid(datos4, {
         'titulo': "Ventas Realizadas",
-        'clase':"light-green",
+        'clase':"white-text brown darken-2",
         'oculto':[5],
         'detalle': {'tipo': 'dtgrid', "origen": datos5, 'config': {"titulo":"Detalle"}, 'parametro': [1]},
         'accion':[{'ejecuta':sUrlP+"Aceptar_Deposito2",'parametro':[1],"texto":"Procesar",'tipo':"php","ocultar":true,"clase":"mdi-content-mail"}]

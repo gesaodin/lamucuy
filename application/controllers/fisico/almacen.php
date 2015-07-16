@@ -220,7 +220,7 @@ class Almacen extends CI_Controller {
    */
   function cerrar() {
     session_destroy();
-    redirect(base_url() . 'index.php/fisico/principal');
+    redirect(base_url() . 'index.php');
   }
 
   // -------------------------------------------------------------------------

@@ -329,7 +329,7 @@ class Panel extends CI_Controller {
 	 */
 	function cerrar() {
 		session_destroy();
-		redirect(base_url() . 'index.php/panel/principal');
+		redirect(base_url() . 'index.php');
 	}
 
 	function __destruct() {
