@@ -274,3 +274,10 @@ class MaestroProducto extends CI_Model {
 		unset ( $this->db );
 	}
 }
+
+/**
+ * select existencia.oidp, producto.nomb, producto.cate, categoria.nomb, existencia.cant,existencia.ubic, almacen.nomb from producto 
+INNER JOIN categoria ON categoria.oid=producto.cate
+INNER JOIN existencia on existencia.oidp=producto.oid
+INNER JOIN almacen ON existencia.ubic=almacen.oid
+GROUP BY producto.oid,producto.cate,existencia.ubic**/

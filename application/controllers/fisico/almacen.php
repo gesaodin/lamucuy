@@ -82,7 +82,8 @@ class Almacen extends CI_Controller {
     $cuerpo = array();
     $cabecera[1] = array("titulo" => "codigo", "atributos" => "width:80px;text-align:center");
     $cabecera[2] = array("titulo" => "Nombre", "atributos" => "width:600px");
-    $cabecera[3] = array("titulo" => "#", "atributos" => "width:8px", 'tipo' => 'bimagen', 'funcion' => 'eliminarCategoria', 'ruta' => __IMG__ . 'quitar.png', 'parametro' => '1');
+    $cabecera[3] = array("titulo" => "#", "atributos" => "width:8px", 'tipo' => 'bimagen', 
+    		'funcion' => 'eliminarCategoria', 'ruta' => __IMG__ . 'quitar.png', 'parametro' => '1');
     
     $data = $this -> Categoria -> listar();
     $rs = $data[0]['rs'];
@@ -254,6 +255,22 @@ class Almacen extends CI_Controller {
     $objecto = array("Cabezera" => $cabecera, "Cuerpo" => $cuerpo, "Origen" => "json", "titulo" => 'Control de Existencia', "leyenda" => '');
     echo json_encode($objecto);
   }
+  
+  function listarExistenciaProductosAlmacen() {
+  	$this -> load -> model('fisico/maestroproducto', 'MaestroProducto');
+  	$cabecera = $this -> MaestroProducto -> cabeceraJSON();
+  	$data = $this -> MaestroProducto -> listarExistenciaProductos();
+  	$rs = $data[0]['rs'];
+  	$i = 0;
+  	foreach ($rs as $clave => $valor) {
+  		$i++;
+  		$cuerpo[$i] = array("1" => $valor -> oidp, "2" => $valor -> codi, "3" => $valor -> nomb, "4" => $valor -> unidad, "5" => $valor -> disp, "6" => $valor -> fent, "7" => '');
+  	}
+  	$objecto = array("Cabezera" => $cabecera, "Cuerpo" => $cuerpo, "Origen" => "json", "titulo" => 'Control de Existencia', "leyenda" => '');
+  	echo json_encode($objecto);
+  }
+  
+  
 
   function listarPorProducto() {
     $this -> load -> model('fisico/mexistencia', 'Existencia');

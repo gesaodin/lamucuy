@@ -46,7 +46,8 @@ function generarMenu() {
 	$.ajax({
 		url : sUrlC + "Genera_Menu_Categoria",
 		success : function(resp) {
-			alert(resp);
+			alert('Proceso Exitoso');
+			//alert(resp);
 		}
 	});
 }

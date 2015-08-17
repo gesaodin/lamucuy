@@ -6,7 +6,8 @@
     <link href="<?php echo __CSS__ ?>tgrid/tgrid.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo __CSS__ ?>administracion/estilo.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>   
-    <script type="text/javascript" src="<?php echo __JSVIEW__ ?>tgrid/tgrid.js"></script>
     <script type="text/javascript" src="<?php echo __JSVIEW__ ?>fisico/general.js"></script>
+    <script type="text/javascript" src="<?php echo __JSVIEW__ ?>tgrid/tgrid.js"></script>
+    <script type="text/javascript" src="<?php echo __JSVIEW__ ?>tgrid/func.js"></script>
     <script type="text/javascript" src="<?php echo __JSVIEW__ ?>fisico/<?php echo $js; ?>.js"></script>
   </head>
