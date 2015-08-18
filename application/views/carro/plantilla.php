@@ -10,7 +10,7 @@
 		</head><!--/head-->
 		<body>
 		<div id="carro_mini" style="display: none;"></div>
-			<div id="agregar_producto" title="Carrito"></div>
+			<div id="agregar_producto" title="Comanda"></div>
 			<div id="galeria"></div>
 			<!--<ul id="myGallery"></ul><div id='des_galeria'></div></div>-->
 			<div id="soloDet"></div>
@@ -19,7 +19,7 @@
             <br>
                 <div class=""style="">
                     <div class="row">
-                        
+
                         <div id="">
                             <?php
                             if(isset($cuerpo)) $this -> load -> view($cuerpo);
@@ -30,7 +30,7 @@
     	                            <span class="top-label">
                                         </span>
                                     <div class="content-area">
-                                        <div class="content drag-desired">
+                                        <div class="content">
                                         	<center>
                                             <div class="panel-title" id='cssmenu'></div>
                                             <div class="clear"></div>
