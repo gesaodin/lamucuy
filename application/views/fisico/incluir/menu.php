@@ -11,11 +11,15 @@
   <li>
     <a href="<?php echo site_url("fisico/almacen/producto") ?>">Productos</a>
   </li>
+  
+  <!-- 
   <li>
     <a href="<?php echo site_url("fisico/almacen/agregarSerial") ?>">Unidad</a>
-  </li>
+  </li> 
+  -->
+  
   <li>
-    <a href="<?php echo site_url("fisico/almacen/agregarLote") ?>">Lotes</a>
+    <a href="<?php echo site_url("fisico/almacen/agregarLote") ?>">Existencia</a>
   </li>
   <li>
     <a href="<?php echo site_url("fisico/almacen/reporte") ?>">Reportes</a>
