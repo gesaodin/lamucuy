@@ -306,6 +306,11 @@ class Carro extends CI_Controller
         $this->load->view("carro/plantilla", $data);
     }
 
+    function inicio()
+    {
+        $data['cuerpo'] = "carro/inicio";
+        $this->load->view("carro/plantilla", $data);
+    }
     /**
      * Cerrar Sesion del sistema
      */
