@@ -187,6 +187,15 @@ class Almacen extends CI_Controller {
     echo json_encode($combo);
   }
 
+    function consultarID(){
+        $this -> load -> model('fisico/maestroproducto', 'MaestroProducto');
+        $this -> MaestroProducto ->identificador = $_POST['id'];
+        $lista = $this -> MaestroProducto -> consultarID();
+
+        echo json_encode($this -> MaestroProducto);
+        //echo $lista['err'];
+    }
+
   function listarComboAlmacen($tipo = NULL) {
     $combo = array();
     $lista = $this -> Almacen -> listar();

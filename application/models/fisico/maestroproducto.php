@@ -55,6 +55,30 @@ class MaestroProducto extends CI_Model {
 		);
 		return $arr;
 	}
+
+    function consultarID() {
+        $consulta = 'SELECT * FROM producto WHERE oid=' . $this->identificador . ' LIMIT 1';
+
+
+        $rs = $this->db->query ( $consulta );
+        if ($this->db->_error_number () == 0) {
+            foreach ( $rs->result () as $clv => $val ) {
+                $this->identificador = $val->oid;
+                $this->nombre = $val->nomb;
+                $this->observacion = $val->obse;
+                $this->unidad = $val->unid;
+                $this->costoProduccion = $val->cpro;
+                $this->categoria = $val->cate;
+                $this->nombreImagen = $val->imag;
+                $this->metodo = $val->meto;
+            }
+        }
+        $arr [] = array (
+            'err' => $this->db->_error_number (),
+            'msj' => $this->db->_error_message ()
+        );
+        return $arr;
+    }
 	function registrar() {
 		$data = $this->mapearObjeto ();
 		$this->db->insert ( 'producto', $data );
@@ -199,7 +223,7 @@ class MaestroProducto extends CI_Model {
 	function listarPorCategoria($idCategoria = NULL, $ubi = NULL) {
 		$donde = '';
 		if (! is_null ( $idCategoria )) {
-			$donde = 'WHERE producto.cate=' . $idCategoria;
+			$donde = 'WHERE producto.cate=' . $idCategoria .' and existencia.visi=0';
 			if(! is_null ( $ubi ) && $ubi > 0) {
 				$donde .= ' AND existencia.ubic=' . $ubi;
 			}

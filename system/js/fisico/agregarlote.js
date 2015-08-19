@@ -1,6 +1,10 @@
 $(function() {
 	listarProducto();
 	listarAlmacen();
+    $("#factura").hide();
+    $("#marca").hide();
+    $("#modelo").hide();
+    $("#proveedor").hide();
 });
 
 /**
@@ -14,6 +18,7 @@ function listarProducto() {
 			$.each(json, function(item, valor) {
 				$("#producto").append(new Option(valor, item, false, true));
 			});
+            cargar();
 		}
 	});
 }
@@ -91,4 +96,31 @@ function limpiar() {
 	$('#observacion').val('');	
 	$('#cantidad').val('');	
 	$('#serial').val('');	
+}
+
+function cargar(){
+    var id = $("#producto").val();
+    $.ajax({
+        url : sUrlP + 'consultarID',
+        type:"POST",
+        data: "id="+id,
+        dataType : 'JSON',
+        success : function(json) {
+            $("#compra").val(json.costoProduccion);
+            $("#detal").val(json.costoProduccion);
+            $("#mayor").val(json.costoProduccion);
+            $("#descripcion").val(json.nombre);
+            if(json.identificador == 13){
+                $("#factura").show();
+                $("#proveedor").show();
+                $("#marca").show();
+                $("#modelo").show();
+            }else{
+                $("#factura").hide();
+                $("#marca").hide();
+                $("#modelo").hide();
+                $("#proveedor").hide();
+            }
+        }
+    });
 }

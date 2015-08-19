@@ -11,13 +11,13 @@
 
         <tr>
           <td valign="top">Productos:</td>
-          <td colspan="5"><select id="producto" style="width: 590px; height: 22px" class="login_input"></select></td>
+          <td colspan="5"><select id="producto" style="width: 590px; height: 22px" class="login_input" onchange="cargar();"></select></td>
         </tr>
         
         <tr>
           <td valign="top">Factura:</td>
           <td colspan="5" valign="bottom">
-          <input type="text" id="factura" class="login_input" value='0'>&nbsp;Observación: número control del proveedor
+          <input type="text" id="factura" class="login_input" value='0' >&nbsp;Observación: número control del proveedor
           </td>
 
         </tr>
@@ -41,7 +41,7 @@
           </td>
           <td valign="top">Descripción:</td>
           <td colspan="3">
-          <input type="text" id="descripcion" class="login_input" style="width: 358px">
+          <input type="text" id="descripcion" class="login_input" style="width: 358px" readonly="true">
           </td>
 
         </tr>
@@ -49,15 +49,15 @@
         <tr>
           <td valign="top">Precio P.:</td>
           <td>
-          <input type="text" id="compra" class="login_input">
+          <input type="text" id="compra" class="login_input" readonly="true">
           </td>
           <td valign="top">Detal:</td>
           <td>
-          <input type="text" id="detal" class="login_input">
+          <input type="text" id="detal" class="login_input" readonly="true">
           </td>
           <td valign="top">Mayor:</td>
           <td>
-          <input type="text" id="mayor" class="login_input">
+          <input type="text" id="mayor" class="login_input" readonly="true">
           </td>
         </tr>
 
@@ -90,7 +90,7 @@
         <tr id='almacen'>
           <td valign="top">F. Entrada:</td>
           <td>
-          <input type="text" id="fechaEntrada" class="login_input">
+          <input type="date" id="fechaEntrada" class="login_input">
           </td>
           <td valign="top">Ubicación:</td>
           <td colspan="3">

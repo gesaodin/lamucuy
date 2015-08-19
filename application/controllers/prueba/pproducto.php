@@ -51,6 +51,22 @@ class PProducto extends Toast {
   	$this -> _assert_true($this -> estatus);
   	$this -> message = $msj;
   }
+
+
+    function test_consultarID(){
+        $msj = '';
+        $this -> MaestroProducto ->identificador = 3;
+        $arr = $this -> MaestroProducto -> consultarID();
+        foreach ($arr as $clv) {
+            if ($clv['msj'] != '') {
+                $this -> estatus = FALSE;
+                $msj .= 'Error: ' . $clv['err'] . ' Mensaje: ' . $clv['msj'] . '<br>';
+            }
+        }
+        $this -> _assert_true($this -> estatus);
+        $this -> message = $msj;
+
+    }
   
   
   function test_actualizarProducto() {
