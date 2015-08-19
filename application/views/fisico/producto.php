@@ -39,7 +39,7 @@
           <td>Tipo:</td>
           <td><select id="unidad" style="height: 22px"></select></td>
           <td >Costo x Produccion:</td>
-          <td  align="right"  style='visibility: hidden'>
+          <td  align="right" >
           <input type="text" id="costoProducto" class="login_input" value='0'>
           </td>
         </tr>

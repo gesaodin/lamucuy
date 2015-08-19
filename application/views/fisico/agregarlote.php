@@ -17,7 +17,7 @@
         <tr>
           <td valign="top">Factura:</td>
           <td colspan="5" valign="bottom">
-          <input type="text" id="factura" class="login_input">&nbsp;Observación: número control del proveedor
+          <input type="text" id="factura" class="login_input" value='0'>&nbsp;Observación: número control del proveedor
           </td>
 
         </tr>
