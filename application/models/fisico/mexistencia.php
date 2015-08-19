@@ -33,6 +33,8 @@ class MExistencia extends CI_Model {
 	var $estatus;
 	var $ubicacion;
 	var $fechaEntrada;
+	var $visibilidad = 1;
+	
 	function __construct() {
 		parent::__construct ();
 		if (! isset ( $this->db )) {
@@ -73,7 +75,8 @@ class MExistencia extends CI_Model {
 				'fact' => $this->factura, //
 				'esta' => $this->estatus, //
 				'ubic' => $this->ubicacion, //
-				'fech' => $this->fechaEntrada 
+				'fech' => $this->fechaEntrada, //
+				'visi' => $this->visibilidad
 		) //
 ;
 		return $data;
