@@ -32,7 +32,7 @@ class Carro extends CI_Controller
     function index($cat = null)
     {
         //$this -> elancesPrueba();
-        $this->galeriaProductos();
+        $this->inicio();
     }
 
     function galeriaProductos($cat = null)
@@ -304,6 +304,14 @@ class Carro extends CI_Controller
     {
         $data['cuerpo'] = "carro/contacto";
         $this->load->view("carro/plantilla", $data);
+    }
+
+    /*
+     * funciones para consolidar
+     */
+    function consolidar(){
+        $data['cuerpo'] = "carro/consolidar";
+        $this->load->view("carro/consolidar", $data);
     }
 
     function inicio()

@@ -5,7 +5,7 @@
             <img src="<?php echo __IMG__;?>banner1.jpg">
             <div class="caption">
                 <center><p>
-                        <a href="#" class="btn btn-default" role="button">Consolidar Inventario</a>
+                        <a href="<?php echo __LOCALWWW__ . '/index.php/carro/carro/consolidar'; ?>" class="btn btn-default" role="button">Consolidar Inventario</a>
                     </p></center>
             </div>
         </div>
@@ -15,7 +15,7 @@
             <img src="<?php echo __IMG__;?>banner2.jpg">
             <div class="caption">
                 <center><p>
-                        <a href="#" class="btn btn-default" role="button">Comanda</a>
+                        <a href="<?php echo __LOCALWWW__ . '/index.php/carro/carro/galeriaProductos'; ?>" class="btn btn-default" role="button">Comanda</a>
                     </p></center>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <img src="<?php echo __IMG__;?>banner3.jpg">
             <div class="caption">
                 <center><p>
-                        <a href="#" class="btn btn-default" role="button">Reportes</a>
+                        <a href="<?php echo __LOCALWWW__ . '/index.php/carro/carro/galeriaProductos'; ?>" class="btn btn-default" role="button">Reportes</a>
                     </p></center>
             </div>
         </div>

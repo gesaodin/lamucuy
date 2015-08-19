@@ -2,18 +2,6 @@ var productos = new Array();
 $(document).ready(function () {
     $("#carro_mini").load(sUrlC + "ver_carro_mini");
     menuLateral();
-    /*$(".product").each(
-        function (i) {
-            var cadena = $("#des" + this.id).text();
-            //alert(cadena);
-            valores = JSON.parse(cadena);
-            productos[this.id] = valores;
-            var Descripcion = valores.nomb
-                + "<br><span>Bs.F:</span>" + valores.cdet
-                + "<br><span>Dispoibles:</span>" + valores.disp;
-            $("#det" + this.id).html(Descripcion);
-            //alert(Descripcion);
-        });*/
     $("#agregar_producto").dialog({
         modal: true,
         autoOpen: false,
@@ -53,12 +41,6 @@ $(document).ready(function () {
             }
         }
     });
-    /*$('a[rel*=leanModal]').leanModal({
-     top : 200,
-     closeButton : ".modal_close"
-     });*/
-
-
 });
 
 function agregar(id, seri, lote, ubic) {
@@ -72,7 +54,7 @@ function agregar(id, seri, lote, ubic) {
     if (cantidad_actual == undefined) cantidad_actual = 0;
 
 
-    var cant = parseInt($("#cantidad" + ident_a).val()) + parseInt(cantidad_actual);
+    var cant = parseInt($("#cantidad" + ident_a).val()); //+ parseInt(cantidad_actual);
     //$("#cantidad" + id).val('');
     if (cant == '' || cant < 1) {
         alert("Debe ingresar la cantidad de su pedido");
@@ -171,7 +153,7 @@ function mostrarCategoria(id) {
                 productos[this.id] = valores;
                 var Descripcion = valores.nomb
                     + "<br><span>Bs:" + valores.cdet + "</span>"
-                    + "<br><b>" + valores.disp + "</b>";
+                    + "<br><b id='total"+this.id+"'>" + valores.disp + "</b>";
                 $("#det" + this.id).html(Descripcion);
                 //alert(Descripcion);
             });
@@ -203,4 +185,12 @@ function carga_galeria(oidp) {
 
     $("#agregar_producto").load(sUrlC + "galeria/" + oidp);
     $("#agregar_producto").dialog("open");
+}
+
+/*
+funcion para calcular la cantidad vendida ingresando la cantidad que queda en el inventario
+ */
+function calcularCantidad(id){
+    var element = id.split('_');
+    $("#cantidad"+element[1]).val($("#total"+element[1]).text() - $("#"+id).val());
 }

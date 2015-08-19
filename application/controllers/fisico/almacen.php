@@ -151,8 +151,13 @@ class Almacen extends CI_Controller {
     $this -> MaestroProducto -> metodo = $_POST['metodo'];
     $this -> MaestroProducto -> minimo = $_POST['minimo'];
     $this -> MaestroProducto -> costoProduccion = $_POST['costo'];
-    $varlor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/productos') -> salvar(1);
-    $this -> MaestroProducto -> nombreImagen = $_FILES['imagen']['name'];
+      if(isset($_FILES['imagen'])){
+          $varlor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/productos') -> salvar(1);
+          $this -> MaestroProducto -> nombreImagen = $_FILES['imagen']['name'];
+      }else{
+          $this -> MaestroProducto -> nombreImagen = '';
+      }
+
     $arr = $this -> MaestroProducto -> registrar();
 	
     echo 'Proceso Exitoso...';

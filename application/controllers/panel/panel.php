@@ -323,6 +323,52 @@ class Panel extends CI_Controller {
 		$this -> MExcel -> Guardar($ruta);
 		echo "<br><center><a href='/system/repository/xls/".$nomb."' target='top'><img src='" . __IMG__ . "exel1.jpg' style='width:70px'>Click aqui</img></a>";
 	}
+    /*
+     * Funciones para consolidar inventario de sucursal
+     */
+    function listarExistenciaSucursal(){
+        $ubica = $_POST['ubicacion'];
+        $consulta = $this -> db -> query("select existencia.oidp, producto.nomb as producto,
+            producto.cate, categoria.nomb as categoria, sum(existencia.cant)as cant,existencia.ubic, almacen.nomb from producto
+INNER JOIN categoria ON categoria.oid=producto.cate
+INNER JOIN existencia on existencia.oidp=producto.oid
+INNER JOIN almacen ON existencia.ubic=almacen.oid
+WHERE existencia.ubic = ".$ubica." and existencia.visi=0
+GROUP BY producto.cate,existencia.ubic");
+        $obj = array();
+        if ($consulta->num_rows() != 0) {
+            $cab = array("#oid","Producto","oidcat","Categoria","Cantidad","ubicacion");
+            $cuerpo = array();
+            foreach ($consulta->result() as $filas) {
+                $cuerpo[] = array($filas -> oidp, $filas -> producto, $filas -> cate ,$filas -> categoria, $filas -> cant, $filas ->ubic);
+            }
+            $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
+        } else
+            $obj['resp'] = 0;
+        echo json_encode($obj);
+    }
+
+    function listarExistenciaSucursalDetalle(){
+        $datos = json_decode($_POST['datos'],true);
+        $consulta = $this -> db -> query("select existencia.oidp, producto.nomb as producto,
+            producto.cate, categoria.nomb as categoria, existencia.cant,existencia.ubic, almacen.nomb from producto
+INNER JOIN categoria ON categoria.oid=producto.cate
+INNER JOIN existencia on existencia.oidp=producto.oid
+INNER JOIN almacen ON existencia.ubic=almacen.oid
+WHERE existencia.ubic = ".$datos[1]." and existencia.visi=0 and producto.cate = ".$datos[0]."
+GROUP BY producto.oid,producto.cate,existencia.ubic");
+        $obj = array();
+        if ($consulta->num_rows() != 0) {
+            $cab = array("#oid","Producto","oidcat","Categoria","Cantidad");
+            $cuerpo = array();
+            foreach ($consulta->result() as $filas) {
+                $cuerpo[] = array($filas -> oidp, $filas -> producto, $filas -> cate ,$filas -> categoria, $filas -> cant);
+            }
+            $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
+        } else
+            $obj['resp'] = 0;
+        echo json_encode($obj);
+    }
 
 	/**
 	 * Cerrar Sesion del sistema
