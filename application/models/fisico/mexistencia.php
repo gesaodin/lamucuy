@@ -105,6 +105,27 @@ class MExistencia extends CI_Model {
 		$arr = $this->Inventario->aumentar ();
 		return $arr [0];
 	}
+	/**
+	 * Buscar elementos de y distribuir los lotes.
+	 * @param number $cant
+	 * @return array
+	 */
+	function DistribuirExistencia($cant = 0){
+		$this->load->model ( 'administracion/minventario', 'Inventario' );-
+		$this->Inventario->disponibile = $cant;
+		$this->Inventario->idProducto = $this->idProducto;
+		$this->Inventario->serial = $this->serial;
+		$this->Inventario->lote = $this->lote;
+		$this->Inventario->ubicacion = $this->ubicacion;
+		$this->Inventario->precio = $this->costoProduccion;
+		$arr = $this->Inventario->compromoter ();
+		return $arr [0];
+		$this->Inventario->lote = $this->lote + 'C';
+		$arr = $this->Inventario->registrar ();
+		return $arr [0];
+		
+	}
+    
 	function cargarPost($arr = array()) {
 		$listaSerial = explode ( ',', $arr ['listaserial'] );
 		$this->mapearPost ( $arr );
