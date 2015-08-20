@@ -15,11 +15,12 @@ $(function () {
             "origen": datos2,
             'config': {
                 "titulo": "Detalle",
+                'clase': "white-text brown lighten-3",
                 'oculto': [4],
                 "accion": [{
                     "ejecuta": sUrlP + 'consolidarProducto',
                     "tipo": "php",
-                    "clase": "mdi-navigation-check",
+                    "clase": "mdi-navigation-check brown lighten-3",
                     "ocultar": true,
                     "parametro":[4]
                 }]

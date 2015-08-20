@@ -391,11 +391,12 @@ GROUP BY producto.cate,existencia.ubic");
     function historialconsolidarProducto(){
         date_default_timezone_set ( 'America/Caracas' );
         $this -> db -> query("insert into movimiento_existencia(oid,marc,prov,mode,dscr,oidp,seri,lote,
-                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi)
+                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi,oidusu,tip)
                                 select oid,marc,prov,mode,dscr,oidp,seri,lote,
-                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi from existencia
+                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi,'".$_SESSION['oid']."',0 from existencia
                                 where existencia.ubic = ".$_SESSION['ubicacion']);
         echo "Se consolido inventario con exito...".date("d-m-Y h:i:s");
+        //print_R($_SESSION);
     }
 
 	/**
