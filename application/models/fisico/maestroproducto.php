@@ -234,7 +234,7 @@ class MaestroProducto extends CI_Model {
 	    unidad.nomb AS unidad, producto.imag, existencia.fech as fent, producto.mini, producto.maxi,  existencia.mode AS obse, producto.cate, existencia.seri, 
 				existencia.lote, existencia.ubic, existencia.cdet 
 	    FROM producto JOIN existencia ON existencia.oidp=producto.oid  
-		JOIN unidad ON producto.unid=unidad.oid ' . $donde . ' GROUP BY producto.oid, existencia.cdet';
+		JOIN unidad ON producto.unid=unidad.oid ' . $donde . ' GROUP BY producto.oid';//, existencia.cdet';se comento para que no agrupe por precio
 		//echo $lista;
 		$resultado = $this->db->query ( $lista );
 		if ($this->db->_error_number () == 0)

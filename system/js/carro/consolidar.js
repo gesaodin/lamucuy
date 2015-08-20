@@ -3,7 +3,7 @@ $(function () {
     var datos = {
         'tipoOrigen': 'php',
         'rutaObjeto': sUrlP + 'listarExistenciaSucursal',
-        'parametro': 'ubicacion=' + ubica
+        'parametro': 'ubicacion=' + ubica,
     };
     var datos2 = {'tipoOrigen': 'php', 'rutaObjeto': sUrlP + 'listarExistenciaSucursalDetalle'};
     $("#reporte").dtgrid(datos, {
@@ -27,15 +27,13 @@ $(function () {
             'parametro': [3, 6]
         }
     });
-
-    /*var datos4 = {'tipoOrigen': 'php', 'rutaObjeto': sUrlP+'listar_pedidos_pendientes2','parametro':'estatus=0&panel=1'};
-     var datos5 = {'tipoOrigen': 'php', 'rutaObjeto': sUrlP+'Detalle_Orden2'};
-     $("#reporte").dtgrid(datos4, {
-     'titulo': "Ventas Realizadas",
-     'clase':"white-text brown darken-2",
-     'oculto':[5],
-     'detalle': {'tipo': 'dtgrid', "origen": datos5, 'config': {"titulo":"Detalle"}, 'parametro': [1]},
-     'accion':[{'ejecuta':sUrlP+"Aceptar_Deposito2",'parametro':[1],"texto":"Procesar",'tipo':"php","ocultar":true,"clase":"mdi-content-mail"}]
-     });*/
-
 });
+
+function consolidar(){
+    $.ajax({
+        url: sUrlP + "historialconsolidarProducto",
+        success: function (respuesta) {
+            alert(respuesta);
+        }
+    });
+}

@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set ( 'America/Caracas' );
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 
@@ -385,6 +386,16 @@ GROUP BY producto.cate,existencia.ubic");
         }else{
             echo "No Posee comanda por consolidar";
         }
+    }
+
+    function historialconsolidarProducto(){
+        date_default_timezone_set ( 'America/Caracas' );
+        $this -> db -> query("insert into movimiento_existencia(oid,marc,prov,mode,dscr,oidp,seri,lote,
+                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi)
+                                select oid,marc,prov,mode,dscr,oidp,seri,lote,
+                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi from existencia
+                                where existencia.ubic = ".$_SESSION['ubicacion']);
+        echo "Se consolido inventario con exito...".date("d-m-Y h:i:s");
     }
 
 	/**
