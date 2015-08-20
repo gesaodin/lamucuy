@@ -64,10 +64,10 @@ class MAlmacen extends CI_Model {
   }
 
   function cabeceraJSON(){
-    $cabecera[1] = array("titulo" => "codigo", "atributos" => "width:70px;align-text:center;");
-    $cabecera[2] = array("titulo" => "Nombre", "atributos" => "width:220px;align-text:center;");
-    $cabecera[3] = array("titulo" => "Ubicacion", "atributos" => "width:120px;align-text:center;");
-    $cabecera[4] = array("titulo" => "Observacion", "atributos" => "width:260px");
+    $cabecera[1] = array("titulo" => "codigo", "atributos" => "width:70px;text-align:center;");
+    $cabecera[2] = array("titulo" => "Nombre", "atributos" => "width:220px;text-align:center;");
+    $cabecera[3] = array("titulo" => "Ubicacion", "atributos" => "width:120px;text-align:center;");
+    $cabecera[4] = array("titulo" => "Observacion", "atributos" => "width:260px;text-align:center;");
     return $cabecera;
   }
 
