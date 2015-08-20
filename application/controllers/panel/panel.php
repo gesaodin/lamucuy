@@ -350,25 +350,26 @@ GROUP BY producto.cate,existencia.ubic");
 
     function listarExistenciaSucursalDetalle(){
         $datos = json_decode($_POST['datos'],true);
-        $consulta = $this -> db -> query("select activos.oidp, producto.nomb as producto,
-            producto.cate, categoria.nomb as categoria, activos.cant,fab.cant as fabrica,activos.ubic, almacen.nomb from producto
-left join existencia on existencia.oidp=producto.oid
-LEFT JOIN (select oidp,oid,sum(cant)as cant,ubic from existencia
-		WHERE existencia.ubic = ".$datos[1]." and existencia.visi=0
-		group by existencia.oidp)as activos ON producto.oid=activos.oidp
-LEFT JOIN (select oidp,oid,sum(cant)as cant,ubic from existencia
-		WHERE existencia.ubic = ".$datos[1]." and existencia.visi=1
-		group by existencia.oidp)as fab ON producto.oid=fab.oidp
-LEFT JOIN categoria ON categoria.oid=producto.cate
-LEFT JOIN almacen ON activos.ubic=almacen.oid or fab.ubic=almacen.oid
-WHERE (activos.ubic = ".$datos[1]." or fab.ubic=".$datos[1].") and producto.cate = ".$datos[0]."
-GROUP BY producto.oid");
+        $consulta = $this -> db -> query("select activos.oidp, fab.oidp as odipfab,producto.nomb as producto,
+                                  producto.cate, categoria.nomb as categoria, ifnull(activos.cant,0)as cant,ifnull(fab.cant,0) as fabrica,
+                                  activos.ubic, almacen.nomb,fab.ubic as ubicfab from producto
+                                  left join existencia on existencia.oidp=producto.oid
+                                    LEFT JOIN (select oidp,oid,sum(cant)as cant,ubic from existencia
+                                    		WHERE existencia.ubic = ".$datos[1]." and existencia.visi=0
+                                    		group by existencia.oidp)as activos ON producto.oid=activos.oidp
+                                    LEFT JOIN (select oidp,oid,sum(cant)as cant,ubic from existencia
+                                    		WHERE existencia.ubic = ".$datos[1]." and existencia.visi=1
+                                    		group by existencia.oidp)as fab ON producto.oid=fab.oidp
+                                    LEFT JOIN categoria ON categoria.oid=producto.cate
+                                    LEFT JOIN almacen ON activos.ubic=almacen.oid or fab.ubic=almacen.oid
+                                    WHERE (activos.ubic = ".$datos[1]." or fab.ubic=".$datos[1].") and producto.cate = ".$datos[0]."
+                                    GROUP BY producto.oid");
         $obj = array();
         if ($consulta->num_rows() != 0) {
-            $cab = array("#oid","Producto","oidcat","Categoria","Cantidad");
+            $cab = array("#oid","Producto","oidcat","Categoria","Existencia","Comanda");
             $cuerpo = array();
             foreach ($consulta->result() as $filas) {
-                $cuerpo[] = array($filas -> oidp, $filas -> producto, $filas -> cate ,$filas -> categoria, $filas -> cant);
+                $cuerpo[] = array($filas -> oidp, $filas -> producto, $filas -> cate ,$filas -> categoria, $filas -> cant, $filas -> fabrica);
             }
             $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
         } else
