@@ -350,9 +350,9 @@ GROUP BY producto.cate,existencia.ubic");
 
     function listarExistenciaSucursalDetalle(){
         $datos = json_decode($_POST['datos'],true);
-        $consulta = $this -> db -> query("select activos.oidp, fab.oidp as odipfab,producto.nomb as producto,
-                                  producto.cate, categoria.nomb as categoria, ifnull(activos.cant,0)as cant,ifnull(fab.cant,0) as fabrica,
-                                  activos.ubic, almacen.nomb,fab.ubic as ubicfab from producto
+        $consulta = $this -> db -> query("select activos.oidp, fab.oidp as oidpfab,producto.nomb as producto,fab.oid as oidfab,
+                                  producto.cate, categoria.nomb as categoria, ifnull(activos.cant,0)as cant,ifnull(fab.cant,0) as fabrica
+                                  from producto
                                   left join existencia on existencia.oidp=producto.oid
                                     LEFT JOIN (select oidp,oid,sum(cant)as cant,ubic from existencia
                                     		WHERE existencia.ubic = ".$datos[1]." and existencia.visi=0
@@ -366,15 +366,25 @@ GROUP BY producto.cate,existencia.ubic");
                                     GROUP BY producto.oid");
         $obj = array();
         if ($consulta->num_rows() != 0) {
-            $cab = array("#oid","Producto","oidcat","Categoria","Existencia","Comanda");
+            $cab = array("Producto","Existencia","Comanda","oid");
             $cuerpo = array();
             foreach ($consulta->result() as $filas) {
-                $cuerpo[] = array($filas -> oidp, $filas -> producto, $filas -> cate ,$filas -> categoria, $filas -> cant, $filas -> fabrica);
+                $cuerpo[] = array($filas -> producto, $filas -> cant, $filas -> fabrica,$filas -> oidfab);
             }
             $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
         } else
             $obj['resp'] = 0;
         echo json_encode($obj);
+    }
+
+    function consolidarProducto(){
+        $datos = json_decode($_POST['datos']);
+        if($datos[0]!= ''){
+            $this -> db -> query("update existencia set visi=0 where oid=".$datos[0]);
+            echo "La Comanda fue consolidada y agregada a existencia en sucurusal.";
+        }else{
+            echo "No Posee comanda por consolidar";
+        }
     }
 
 	/**

@@ -15,20 +15,11 @@
     <script type="text/javascript" src="/DTGrid/js/detalle.js"></script>
     <script type="text/javascript" src="/DTGrid/js/editar.js"></script>
     <script type="text/javascript" src="/DTGrid/js/paginador.js"></script>
+    <script type="text/javascript" src="/DTGrid/js/accion.js"></script>
 
     <script type="text/javascript" src="<?php echo __JSVIEW__ ?>carro/consolidar.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script>
-        $(function () {
-            $('.button-collapse').sideNav({
-                    menuWidth: 300, // Default is 240
-                    //edge: 'right',
-                    closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                }
-            );
-        });
 
-    </script>
 </head>
 <body>
 <?php $this -> load -> view("carro/incluir/menu"); ?>
