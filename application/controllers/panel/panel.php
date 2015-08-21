@@ -27,9 +27,15 @@ class Panel extends CI_Controller {
 	}
 
 	function index() {
-		$data['js'] = 'principal';
-		$this -> load -> view('panel2/panel', $data);
+		/*$data['js'] = 'principal';
+		$this -> load -> view('panel2/panel', $data);*/
+        $this->resumenDiario();
 	}
+
+    function resumenDiario(){
+        $data['js'] = 'diario';
+        $this -> load -> view('panel2/diario', $data);
+    }
 
 	/*
 	 * Agregar imagen a galeria de producto
@@ -397,6 +403,95 @@ GROUP BY producto.cate,existencia.ubic");
                                 where existencia.ubic = ".$_SESSION['ubicacion']);
         echo "Se consolido inventario con exito...".date("d-m-Y h:i:s");
         //print_R($_SESSION);
+    }
+
+    /**
+     * Funciones para reporte de resumen diario
+     */
+    function dtgridresumenDiario(){
+        $consulta = $this -> db -> query('select mv.fech as fecha,ubic,oidusu,if(tip = 0,"Apertura","Cierre")as tip,
+                        pedido,usuario.seud ,ifnull(debi,0)as debi,ifnull(cred,0)as efectivo,ifnull(mont,0)as sistema
+                        from movimiento_existencia as mv
+                        join usuario on usuario.oid = mv.oidusu
+                        left join historial_cierre on historial_cierre.oid = mv.pedido
+                        where mv.ubic = '.$_POST['ubic'].' and mv.fech like "%'.$_POST['fech'].'%"
+                        group by mv.fech');
+        $obj = array();
+        if ($consulta->num_rows() != 0) {
+            $cab = array("pedido","Usuario","Tipo","M. Debito/Credito","M. Efectivo","M. Sistema","Fecha","ubic","usu");
+            $cuerpo = array();
+            $rs = $consulta -> result();
+            foreach ($rs as $filas) {
+                $cuerpo[] = array($filas -> pedido, $filas -> seud, $filas -> tip , $filas -> debi,
+                    $filas -> efectivo,$filas -> sistema,$filas -> fecha,$filas -> ubic,$filas -> oidusu);
+            }
+            $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
+        } else
+            $obj['resp'] = 0;
+        echo json_encode($obj);
+    }
+
+    function DetalleResumenDiario(){
+        $datos = json_decode($_POST['datos'],true);
+
+        $consulta = $this -> db -> query('select movimiento_existencia.oidp, producto.nomb as producto,
+            producto.cate, categoria.nomb as categoria, sum(movimiento_existencia.cant)as cant,
+				movimiento_existencia.ubic, almacen.nomb,movimiento_existencia.oidusu,movimiento_existencia.fech
+				from producto
+INNER JOIN categoria ON categoria.oid=producto.cate
+INNER JOIN movimiento_existencia on movimiento_existencia.oidp=producto.oid
+INNER JOIN almacen ON movimiento_existencia.ubic=almacen.oid
+WHERE movimiento_existencia.ubic = '.$datos[1].' and movimiento_existencia.oidusu = '.$datos[2].'
+and movimiento_existencia.fech = "'.$datos[0].'"
+GROUP BY producto.cate,movimiento_existencia.ubic');
+        $obj = array();
+        if ($consulta->num_rows() != 0) {
+            $cab = array("#oid","Producto","oidcat","Categoria","Cantidad","ubicacion","usu","fech");
+            $cuerpo = array();
+            foreach ($consulta->result() as $filas) {
+                $cuerpo[] = array($filas -> oidp, $filas -> producto, $filas -> cate ,$filas -> categoria,
+                    $filas -> cant, $filas ->ubic,$filas -> oidusu, $filas ->fech);
+            }
+            $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
+        } else
+            $obj['resp'] = 0;
+        echo json_encode($obj);
+
+    }
+
+    function Detalle2ResumenDiario(){
+        $datos = json_decode($_POST['datos'],true);
+        $consulta = $this -> db -> query('select activos.oidp, fab.oidp as oidpfab,producto.nomb as producto,fab.oid as oidfab,
+   producto.cate, categoria.nomb as categoria, ifnull(activos.cant,0)as cant,
+	ifnull(fab.cant,0) as fabrica
+   from producto
+   left join movimiento_existencia on movimiento_existencia.oidp=producto.oid
+   LEFT JOIN (select oidp,oid,sum(cant)as cant,ubic from movimiento_existencia
+          		WHERE movimiento_existencia.ubic = '.$datos[1].' and movimiento_existencia.visi=0
+          		and movimiento_existencia.oidusu = '.$datos[2].'
+					 and movimiento_existencia.fech = "'.$datos[3].'"
+           		group by movimiento_existencia.oidp)as activos ON producto.oid=activos.oidp
+   LEFT JOIN (select oidp,oid,sum(cant)as cant,ubic from movimiento_existencia
+          		WHERE movimiento_existencia.ubic = '.$datos[1].' and movimiento_existencia.visi=1
+          		and movimiento_existencia.oidusu = '.$datos[2].'
+					 and movimiento_existencia.fech = "'.$datos[3].'"
+           		group by movimiento_existencia.oidp)as fab ON producto.oid=fab.oidp
+   LEFT JOIN categoria ON categoria.oid=producto.cate
+   LEFT JOIN almacen ON activos.ubic=almacen.oid or fab.ubic=almacen.oid
+   WHERE (activos.ubic = '.$datos[1].' or fab.ubic='.$datos[1].') and producto.cate = '.$datos[0].'
+   GROUP BY producto.oid');
+        $obj = array();
+        if ($consulta->num_rows() != 0) {
+            $cab = array("Producto","Existencia","Comanda","oid");
+            $cuerpo = array();
+            foreach ($consulta->result() as $filas) {
+                $cuerpo[] = array($filas -> producto, $filas -> cant, $filas -> fabrica,$filas -> oidfab);
+            }
+            $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
+        } else
+            $obj['resp'] = 0;
+        echo json_encode($obj);
+
     }
 
 	/**
