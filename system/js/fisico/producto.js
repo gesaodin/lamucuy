@@ -1,5 +1,5 @@
 $(function() {
-  listarTipo();
+  //listarTipo();
   listarCategoria();
 
 });

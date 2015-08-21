@@ -14,7 +14,7 @@
           <td colspan="5"><select id="producto" style="width: 590px; height: 22px" class="login_input" onchange="cargar();"></select></td>
         </tr>
 
-        <tr>
+        <tr class="ocultar">
           <td valign="top">Factura:</td>
           <td colspan="1" valign="bottom">
           <input type="text" id="factura" class="login_input" value='0' >&nbsp;
@@ -25,7 +25,7 @@
           </td>
         </tr>
 
-        <tr>
+        <tr class="ocultar">
           <td valign="top">Tipo:</td>
           <td>
             <input type="text" id="modelo" class="login_input" value='CHOCOLATES'>

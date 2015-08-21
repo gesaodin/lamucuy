@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set ( 'America/Caracas' );
+date_default_timezone_set('America/Caracas');
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -97,7 +97,7 @@ class Carro extends CI_Controller
         //$data = array('id' => 1, 'cantidad' => 1, 'precio' => '20.82', 'nombre' => 'Bolsas de Color Rojo');
         $this->MCarro->registrar($_POST);
         //print_r($_POST);
-    	echo "Se agrego con exito";
+        echo "Se agrego con exito";
     }
 
     function listar()
@@ -128,7 +128,9 @@ class Carro extends CI_Controller
     function realizarPedido()
     {
         $val = $this->MCarro->realizarPedido();
-        $this -> historialconsolidarProducto($val['orde']);
+        $this->historialconsolidarProducto($val['orde']);
+        $datos= array("oid"=>$val[0]['orde'],"mont"=>$_POST['sistema'],"debi"=>$_POST['debito'],"cred"=>$_POST['efectivo'],"usuar"=>$_SESSION['oid'],"esta"=>0);
+        $this -> db -> insert("historial_cierre",$datos);
         echo "Se realizo el cierre con exito.";
     }
 
@@ -311,7 +313,8 @@ class Carro extends CI_Controller
     /*
      * funciones para consolidar
      */
-    function consolidar(){
+    function consolidar()
+    {
         $data['cuerpo'] = "carro/consolidar";
         $this->load->view("carro/consolidar", $data);
     }
@@ -321,16 +324,18 @@ class Carro extends CI_Controller
         $data['cuerpo'] = "carro/inicio";
         $this->load->view("carro/plantilla", $data);
     }
+
     /**
      * funcion para historial de inventario sucursal despues de realizar el pedido
      */
-    function historialconsolidarProducto($orden){
-        date_default_timezone_set ( 'America/Caracas' );
-        $this -> db -> query("insert into movimiento_existencia(oid,marc,prov,mode,dscr,oidp,seri,lote,
+    function historialconsolidarProducto($orden)
+    {
+        date_default_timezone_set('America/Caracas');
+        $this->db->query("insert into movimiento_existencia(oid,marc,prov,mode,dscr,oidp,seri,lote,
                                 cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi,oidusu,tip,pedido)
                                 select oid,marc,prov,mode,dscr,oidp,seri,lote,
-                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi,'".$_SESSION['oid']."',1,'".$orden."' from existencia
-                                where existencia.ubic = ".$_SESSION['ubicacion']);
+                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi,'" . $_SESSION['oid'] . "',1,'" . $orden . "' from existencia
+                                where existencia.ubic = " . $_SESSION['ubicacion']);
         echo "Se consolido inventario con exito...";
     }
 

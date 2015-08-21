@@ -334,7 +334,7 @@ class Panel extends CI_Controller {
 INNER JOIN categoria ON categoria.oid=producto.cate
 INNER JOIN existencia on existencia.oidp=producto.oid
 INNER JOIN almacen ON existencia.ubic=almacen.oid
-WHERE existencia.ubic = ".$ubica." and existencia.visi=0
+WHERE existencia.ubic = ".$ubica."
 GROUP BY producto.cate,existencia.ubic");
         $obj = array();
         if ($consulta->num_rows() != 0) {

@@ -1,10 +1,8 @@
 $(function() {
 	listarProducto();
 	listarAlmacen();
-    $("#factura").hide();
-    $("#marca").hide();
-    $("#modelo").hide();
-    $("#proveedor").hide();
+    $(".ocultar").hide();
+
 });
 
 /**
@@ -72,7 +70,7 @@ function registrar() {
 		processData : false,
 		cache : false,
 		success : function(msj) {
-			//limpiar();
+			limpiar();
 			alert(msj);
 		}
 	});
@@ -111,15 +109,9 @@ function cargar(){
             $("#mayor").val(json.costoProduccion);
             $("#descripcion").val(json.nombre);
             if(json.identificador == 13){
-                $("#factura").show();
-                $("#proveedor").show();
-                $("#marca").show();
-                $("#modelo").show();
+                $(".ocultar").show();
             }else{
-                $("#factura").hide();
-                $("#marca").hide();
-                $("#modelo").hide();
-                $("#proveedor").hide();
+                $(".ocultar").hide();
             }
         }
     });

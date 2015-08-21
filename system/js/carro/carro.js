@@ -166,9 +166,35 @@ function mostrarMenuCategoria() {
 }
 
 function realizar_pedido() {
-    $.post(sUrlC + "realizarPedido", "", function (res) {
+    /*$.post(sUrlC + "realizarPedido", "", function (res) {
         alert(res);
         $("#estcorp-contenedor-medio-productos").load(sUrlC + "listar");
+    });*/
+    var debito =$("#tot_debito").val();
+    var efectivo =$("#tot_efectivo").val();
+    var sistema =$("#tot_sistema").val();
+    if(debito == '' || efectivo == '' || sistema == '' ){
+        alert("Debe ingresar todos los totales.");
+        return false;
+    }
+    var datos = new FormData();
+
+    datos.append('debito', debito);
+    datos.append('efectivo', efectivo);
+    datos.append('sistema', sistema);
+    $.ajax({
+        url: sUrlC + "realizarPedido",
+        type: "POST",
+        data: datos,
+        contentType: false,
+        processData: false,
+        cache: false,
+        success: function (res) {
+            alert(res);
+            $("#estcorp-contenedor-medio-productos").load(sUrlC + "listar");
+
+        }
+
     });
     $.ajax({
         url: sUrlC + "LimpiarCarrito",
