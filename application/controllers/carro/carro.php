@@ -128,7 +128,7 @@ class Carro extends CI_Controller
     function realizarPedido()
     {
         $val = $this->MCarro->realizarPedido();
-        $this -> historialconsolidarProducto();
+        $this -> historialconsolidarProducto($val['orde']);
         echo "Se realizo el cierre con exito.";
     }
 
@@ -324,14 +324,14 @@ class Carro extends CI_Controller
     /**
      * funcion para historial de inventario sucursal despues de realizar el pedido
      */
-    function historialconsolidarProducto(){
+    function historialconsolidarProducto($orden){
         date_default_timezone_set ( 'America/Caracas' );
         $this -> db -> query("insert into movimiento_existencia(oid,marc,prov,mode,dscr,oidp,seri,lote,
-                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi,oidusu,tip)
+                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi,oidusu,tip,pedido)
                                 select oid,marc,prov,mode,dscr,oidp,seri,lote,
-                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi,'".$_SESSION['oid']."',1 from existencia
+                                cuni,cpro,cdet,cmay,unid,cant,fact,esta,ubic,visi,'".$_SESSION['oid']."',1,'".$orden."' from existencia
                                 where existencia.ubic = ".$_SESSION['ubicacion']);
-        echo "Se consolido inventario con exito...".date("d-m-Y h:i:s");
+        echo "Se consolido inventario con exito...";
     }
 
     /**

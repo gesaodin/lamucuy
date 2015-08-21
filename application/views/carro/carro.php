@@ -17,7 +17,7 @@ td, th, .tabla{
 <div class="content-area" id="estcorp-contenedor-medio-productos">	
 	
 	<div class="companyinfo">
-							<h2><span></span>&nbsp;Comandas</h2>
+							<h2><span></span>&nbsp;Consolidar Venta</h2>
 							<p>
 					</div>
 	<div class="content drag-desired"><br>   

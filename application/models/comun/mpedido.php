@@ -28,6 +28,7 @@ class MPedido extends CI_Model {
 		$data = $this->mapearObjeto ( $carroContenido );
 		$val [] = $this->registrarPedido ( $data );
 		$val [] = $this->comprometerExistencia ( $data );
+        $val['orde'] = $data["orde"];
 		return $val;
 	}
 	function mapearObjeto($carroContenido = array()) {
