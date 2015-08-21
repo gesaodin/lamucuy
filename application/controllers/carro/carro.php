@@ -127,11 +127,15 @@ class Carro extends CI_Controller
      */
     function realizarPedido()
     {
+        if (! isset ( $this->db )) {
+            $this->load->database ();
+        }
         $val = $this->MCarro->realizarPedido();
         $this->historialconsolidarProducto($val['orde']);
-        $datos= array("oid"=>$val[0]['orde'],"mont"=>$_POST['sistema'],"debi"=>$_POST['debito'],"cred"=>$_POST['efectivo'],"usuar"=>$_SESSION['oid'],"esta"=>0);
+        $datos= array("oid"=>$val['orde'],"mont"=>$_POST['sistema'],"debi"=>$_POST['debito'],"cred"=>$_POST['efectivo'],"usua"=>$_SESSION['oid'],"esta"=>0);
         $this -> db -> insert("historial_cierre",$datos);
         echo "Se realizo el cierre con exito.";
+        print_R($datos);
     }
 
     function disponibilidadInventario()
