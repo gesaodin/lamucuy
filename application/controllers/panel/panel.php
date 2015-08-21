@@ -494,6 +494,32 @@ GROUP BY producto.cate,movimiento_existencia.ubic');
 
     }
 
+    function pedidoID(){
+        $data['oid'] = $_GET['valor'];
+        $data['js'] = 'verPedido';
+        $this -> load -> view('panel2/verPedido', $data);
+    }
+
+    function resumenPedido(){
+        $orde = $_POST['oid'];
+        $consulta = $this -> db -> query('select cant,prec,producto.nomb,(cant*prec)as tot from pedido
+join producto on producto.oid = pedido.oidp
+where orde = '.$orde);
+        $obj = array();
+        if ($consulta->num_rows() != 0) {
+            $cab = array("Producto","Cantidad","Precio","Sub-Total");
+            $cuerpo = array();
+            foreach ($consulta->result() as $filas) {
+                $cuerpo[] = array($filas -> nomb, $filas -> cant, $filas -> prec,$filas -> tot);
+            }
+            $obj[] = array("cabecera" => $cab, "cuerpo" => $cuerpo);
+        } else
+            $obj['resp'] = 0;
+        echo json_encode($obj);
+
+
+    }
+
 	/**
 	 * Cerrar Sesion del sistema
 	 */

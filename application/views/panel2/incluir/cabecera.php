@@ -10,6 +10,7 @@
     <script type="text/javascript" src="/DTGrid/js/detalle.js"></script>
     <script type="text/javascript" src="/DTGrid/js/editar.js"></script>
     <script type="text/javascript" src="/DTGrid/js/paginador.js"></script>
+    <script type="text/javascript" src="/DTGrid/js/enlace.js"></script>
 
     <script type="text/javascript" src="<?php echo __JSVIEW__ ?>panel2/<?php echo $js; ?>.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>

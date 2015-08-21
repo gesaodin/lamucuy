@@ -81,8 +81,8 @@ CREATE TABLE IF NOT EXISTS `detalle_lote` (
 -- Volcando datos para la tabla lamucuy.detalle_lote: 2 rows
 /*!40000 ALTER TABLE `detalle_lote` DISABLE KEYS */;
 INSERT INTO `detalle_lote` (`oid`, `obsr`, `cant`, `fent`) VALUES
-	('ltnu001', '\n            observacion', 81, '2015-08-20'),
-	('lotnj001', '\n            observa2', 90, '2015-08-20');
+	('sadf', '\n            asdf', 81, '2015-08-21'),
+	('asdf', 'sadf', 81, '0000-00-00');
 /*!40000 ALTER TABLE `detalle_lote` ENABLE KEYS */;
 
 
@@ -109,10 +109,13 @@ CREATE TABLE IF NOT EXISTS `existencia` (
   `visi` tinyint(1) NOT NULL COMMENT 'Estatus de visibilidad para sucursales 0: Contable 1: Pendiente',
   PRIMARY KEY (`oid`),
   UNIQUE KEY `oidp` (`oidp`,`seri`,`lote`,`ubic`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Mercancía activa e inactiva';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Mercancía activa e inactiva';
 
--- Volcando datos para la tabla lamucuy.existencia: 0 rows
+-- Volcando datos para la tabla lamucuy.existencia: 2 rows
 /*!40000 ALTER TABLE `existencia` DISABLE KEYS */;
+INSERT INTO `existencia` (`oid`, `marc`, `prov`, `mode`, `dscr`, `oidp`, `seri`, `lote`, `cuni`, `cpro`, `cdet`, `cmay`, `unid`, `cant`, `fact`, `esta`, `ubic`, `fech`, `visi`) VALUES
+	(1, 'CHOCOLATES', 'CHOCOLATES LA MUCUY', 'CHOCOLATES', 'Lingonte de Naranja', 15, 'asdf', 'sadf', 0.00, 80.00, 80.00, 80.00, 2, 18, '0', 1, 2, '2015-08-21 00:26:36', 0),
+	(2, '', '', '', 'JAZMIN', 6, 'asdf', 'asdf', 0.00, 60.00, 60.00, 60.00, 2, 22, '', 1, 2, '2015-08-21 00:26:36', 0);
 /*!40000 ALTER TABLE `existencia` ENABLE KEYS */;
 
 
@@ -143,8 +146,11 @@ CREATE TABLE IF NOT EXISTS `historial_cierre` (
   `clav` varchar(256) NOT NULL COMMENT 'Manejo de Claves'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla lamucuy.historial_cierre: 0 rows
+-- Volcando datos para la tabla lamucuy.historial_cierre: 2 rows
 /*!40000 ALTER TABLE `historial_cierre` DISABLE KEYS */;
+INSERT INTO `historial_cierre` (`oid`, `mont`, `debi`, `cred`, `fech`, `usua`, `esta`, `clav`) VALUES
+	(1, 3740.00, 3000.00, 740.00, '2015-08-21 00:23:05', 2, 0, ''),
+	(2, 4840.00, 4000.00, 850.00, '2015-08-21 00:26:36', 5, 0, '');
 /*!40000 ALTER TABLE `historial_cierre` ENABLE KEYS */;
 
 
@@ -160,10 +166,13 @@ CREATE TABLE IF NOT EXISTS `inventario` (
   `fent` date NOT NULL COMMENT 'Fecha Entrada',
   PRIMARY KEY (`oid`),
   UNIQUE KEY `oidp` (`oidp`,`seri`,`lote`,`ubic`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Registro, balance, descripción, lista, relación';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Registro, balance, descripción, lista, relación';
 
--- Volcando datos para la tabla lamucuy.inventario: 0 rows
+-- Volcando datos para la tabla lamucuy.inventario: 2 rows
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
+INSERT INTO `inventario` (`oid`, `oidp`, `seri`, `lote`, `ubic`, `disp`, `prec`, `fent`) VALUES
+	(1, 15, 'asdf', 'sadf', 2, 18, 80.00, '2015-08-21'),
+	(2, 6, 'asdf', 'asdf', 2, 22, 60.00, '2015-08-21');
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
 
 
@@ -219,8 +228,15 @@ CREATE TABLE IF NOT EXISTS `movimiento_existencia` (
   `pedido` int(11) NOT NULL DEFAULT '0' COMMENT 'oid de pediod de venta asociado al cierre'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Mercancía activa e inactiva';
 
--- Volcando datos para la tabla lamucuy.movimiento_existencia: 0 rows
+-- Volcando datos para la tabla lamucuy.movimiento_existencia: 6 rows
 /*!40000 ALTER TABLE `movimiento_existencia` DISABLE KEYS */;
+INSERT INTO `movimiento_existencia` (`oid`, `marc`, `prov`, `mode`, `dscr`, `oidp`, `seri`, `lote`, `cuni`, `cpro`, `cdet`, `cmay`, `unid`, `cant`, `fact`, `esta`, `ubic`, `fech`, `visi`, `clav`, `oidusu`, `tip`, `pedido`) VALUES
+	(1, 'CHOCOLATES', 'CHOCOLATES LA MUCUY', 'CHOCOLATES', 'Lingonte de Naranja', 15, 'asdf', 'sadf', 0.00, 80.00, 80.00, 80.00, 2, 81, '0', 0, 2, '2015-08-21 00:22:32', 0, '', 2, 0, 0),
+	(2, '', '', '', 'JAZMIN', 6, 'asdf', 'asdf', 0.00, 60.00, 60.00, 60.00, 2, 81, '', 0, 2, '2015-08-21 00:22:32', 0, '', 2, 0, 0),
+	(1, 'CHOCOLATES', 'CHOCOLATES LA MUCUY', 'CHOCOLATES', 'Lingonte de Naranja', 15, 'asdf', 'sadf', 0.00, 80.00, 80.00, 80.00, 2, 50, '0', 1, 2, '2015-08-21 00:23:05', 0, '', 2, 1, 1),
+	(2, '', '', '', 'JAZMIN', 6, 'asdf', 'asdf', 0.00, 60.00, 60.00, 60.00, 2, 60, '', 1, 2, '2015-08-21 00:23:05', 0, '', 2, 1, 1),
+	(1, 'CHOCOLATES', 'CHOCOLATES LA MUCUY', 'CHOCOLATES', 'Lingonte de Naranja', 15, 'asdf', 'sadf', 0.00, 80.00, 80.00, 80.00, 2, 18, '0', 1, 2, '2015-08-21 00:26:36', 0, '', 5, 1, 2),
+	(2, '', '', '', 'JAZMIN', 6, 'asdf', 'asdf', 0.00, 60.00, 60.00, 60.00, 2, 22, '', 1, 2, '2015-08-21 00:26:36', 0, '', 5, 1, 2);
 /*!40000 ALTER TABLE `movimiento_existencia` ENABLE KEYS */;
 
 
@@ -233,12 +249,14 @@ CREATE TABLE IF NOT EXISTS `orden` (
   PRIMARY KEY (`codi`,`tipo`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Control de Pedidos';
 
--- Volcando datos para la tabla lamucuy.orden: 3 rows
+-- Volcando datos para la tabla lamucuy.orden: 5 rows
 /*!40000 ALTER TABLE `orden` DISABLE KEYS */;
 INSERT INTO `orden` (`codi`, `nomb`, `tipo`, `fech`) VALUES
 	(0, 'Carrito: Solicitud de Pedido', 0, '2014-03-05 22:15:07'),
 	(0, 'Orden de Compra', 2, '2015-06-16 08:31:14'),
-	(0, 'Orden de Despacho', 1, '2015-06-16 08:31:21');
+	(0, 'Orden de Despacho', 1, '2015-06-16 08:31:21'),
+	(2, 'Carrito: Solicitud de Pedido', 0, '2015-08-21 00:00:00'),
+	(1, 'Carrito: Solicitud de Pedido', 0, '2015-08-21 00:00:00');
 /*!40000 ALTER TABLE `orden` ENABLE KEYS */;
 
 
@@ -257,10 +275,15 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   PRIMARY KEY (`oid`),
   KEY `oidu` (`oidu`),
   KEY `oidp` (`oidp`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Encargo, petición, demanda';
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='Encargo, petición, demanda';
 
--- Volcando datos para la tabla lamucuy.pedido: 0 rows
+-- Volcando datos para la tabla lamucuy.pedido: 4 rows
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+INSERT INTO `pedido` (`oid`, `oidu`, `oidp`, `seri`, `lote`, `ubic`, `cant`, `prec`, `orde`, `esta`) VALUES
+	(1, 2, 6, 'asdf', 'asdf', 2, 21, 60.00, '1', 0),
+	(2, 2, 15, 'asdf', 'sadf', 2, 31, 80.00, '1', 0),
+	(3, 5, 6, 'asdf', 'asdf', 2, 38, 60.00, '2', 0),
+	(4, 5, 15, 'asdf', 'sadf', 2, 32, 80.00, '2', 0);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 
 
@@ -371,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   UNIQUE KEY `cedu` (`cedu`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='Control de usuarios';
 
--- Volcando datos para la tabla lamucuy.usuario: 5 rows
+-- Volcando datos para la tabla lamucuy.usuario: 6 rows
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
 INSERT INTO `usuario` (`oid`, `tipo`, `cedu`, `nomb`, `apel`, `dire`, `seud`, `clav`, `corr`, `celu`, `telf`, `empr`, `pagi`) VALUES
 	(1, 'V', 1, 'Administrador De Inventario', 'General', 'Mérida', 'INVEN', '202cb962ac59075b964b07152d234b70', '', '', '', '', ''),
@@ -393,13 +416,15 @@ CREATE TABLE IF NOT EXISTS `_usuarioperfil` (
   KEY `oidp` (`oidp`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Relacion Usuario - Perfil';
 
--- Volcando datos para la tabla lamucuy._usuarioperfil: 4 rows
+-- Volcando datos para la tabla lamucuy._usuarioperfil: 6 rows
 /*!40000 ALTER TABLE `_usuarioperfil` DISABLE KEYS */;
 INSERT INTO `_usuarioperfil` (`oidu`, `oidp`, `oidub`) VALUES
 	(2, 2, 2),
 	(1, 1, 0),
 	(3, 6, 1),
-	(4, 2, 3);
+	(4, 2, 3),
+	(5, 2, 2),
+	(6, 1, 3);
 /*!40000 ALTER TABLE `_usuarioperfil` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

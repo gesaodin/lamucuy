@@ -48,13 +48,15 @@ function resumen(){
     $("#reporte").dtgrid(datos4, {
         'titulo': "Resumen de movimientos diarios",
         'clase':"white-text brown darken-2",
-        'oculto':[1,8,9],
+        'oculto':[8,9],
+        "enlace":[{"columna":"1","url":sUrlP+'pedidoID',"target":"_blank","codeigniter":true}],
         'detalle': {
             'tipo': 'dtgrid',
             "origen": datos5,
             'config': {
                 "titulo":"",
                 'clase':"white-text brown",
+                'oculto':[1,2,3,6,7,8],
                 'detalle': {
                     'tipo': 'dtgrid',
                     "origen": datos6,
@@ -62,7 +64,7 @@ function resumen(){
                         "titulo":"Detalle",
                         'clase':"white-text brown lighten-3"
                     },
-                    'parametro': [4,6,7,8]
+                    'parametro': [3,6,7,8]
                 }
 
             },
