@@ -1,6 +1,7 @@
 body {
-  background: url(img/bg.gif) repeat #031B46;
-  padding: 0;
+  /*background-image: url("/lamucuy/system/img/logo.jpg");
+  background-size: 288px;*/
+
   font-family: arial, sans-serif;
   font-size: 12px;
   margin: 0px auto auto auto;
@@ -156,6 +157,10 @@ span.orange {
 /*---------------center_content-------*/
 /*---------------center_content-------*/
 .center_content {
+  /*background-image: url("/lamucuy/system/img/logo.jpg");*/
+  background-image: url("/lamucuy/system/img/logo.jpg");
+  background-repeat: no-repeat;
+  background-size: 500px;
   width: 821px;
   height: auto;
   clear: both;
@@ -163,12 +168,12 @@ span.orange {
   background-color: #ffffff;
 }
 .center_left {
-  width: 500px;
+  width: 800px;
   float: left;
   padding: 10px 0 10px 10px;
 }
 .center_right {
-  width: 200px;
+  width: 400px;
   float: left;
   padding: 10px 0px 10px 30px;
 }
@@ -310,3 +315,6 @@ ul.list li a:hover {
   float: right;
   padding: 15px 5px 0 0;
 }
+
+
+

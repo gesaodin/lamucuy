@@ -26,8 +26,9 @@ class Almacen extends CI_Controller {
   }
 
   function index() {
-    $data['js'] = 'principal';
-    $this -> load -> view('fisico/principal', $data);
+    $this ->verAlmacen();
+   // $data['js'] = 'principal';
+   // $this -> load -> view('fisico/principal', $data);
   }
 
   function verAlmacen() {

@@ -49,7 +49,7 @@ h1.titulo {
 	color:#fff;
 	font-size: 11px;
 	padding: 5px 5px 5px 5px;
-	background-color:#4E96BE;
+	background-color:#3d2316;
 	text-shadow: 1px 1px 1px #444;
 	font-weight:bold;
 	text-transform: uppercase;
@@ -59,7 +59,7 @@ h1.titulo {
 	color:#fff;
 	font-size: 11px;
 	padding: 5px 5px 5px 5px;
-	background-color:#4E96BE;
+	background-color:#3d2316;
 	text-shadow: 1px 1px 1px #444;
 	font-weight:bold;
 	text-transform: uppercase;
@@ -78,7 +78,7 @@ h1.titulo {
 	color:#fff;
 	font-size: 11px;
 	padding: 2px 5px 2px 5px;
-	background-color:#4E96BE;
+	background-color:#3d2316;
 	text-shadow: 1px 1px 1px #444;
 	font-weight:bold;
 }
@@ -101,6 +101,7 @@ h1.titulo {
 .TGrid tbody tr {
 	border: 1px solid #999;
 	/*border: inset 0pt;*/
+	background-color: #F5F3E5;
      border-collapse: 0;
      border-spacing: 0;
      border: inset 0;
@@ -110,10 +111,7 @@ h1.titulo {
 	background-color: #F5F3E5;
 	color: white
 }
-.TGrid tbody tr:2n {
-	background-color: #D6EEFB;
-	color: white
-}
+
 .TGrid tbody td {
 	font-size: 10px;
 	background-color:transparent;

@@ -1,7 +1,7 @@
 <ul>
-  <li class="selected">
+  <!--<li class="selected">
     <a href="<?php echo site_url("fisico/almacen/index") ?>">Inicio</a>
-  </li>
+  </li>-->
   <li>
     <a href="<?php echo site_url("fisico/almacen/verAlmacen") ?>">Almacén</a>
   </li>
@@ -21,9 +21,9 @@
   <li>
     <a href="<?php echo site_url("fisico/almacen/agregarLote") ?>">Existencia</a>
   </li>
-  <li>
+  <!--<li>
     <a href="<?php echo site_url("fisico/almacen/reporte") ?>">Reportes</a>
-  </li>
+  </li>-->
   <li>
     <a href="<?php echo site_url("fisico/almacen/cerrar") ?>">Cerrar Sesión</a>
   </li>  
