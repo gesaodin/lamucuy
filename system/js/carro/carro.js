@@ -135,7 +135,8 @@ function menuLateral() {
         var sspan = document.createElement("span");
         sspan.innerHTML = Esq_menu[i].nomb;
         senlace.appendChild(img);
-        //senlace.appendChild(sspan);
+        senlace.appendChild(sspan);
+
     }
 }
 
