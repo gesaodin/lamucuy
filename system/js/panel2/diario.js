@@ -1,7 +1,7 @@
 $(function() {
     listarAlmacen();
     $('select').material_select();
-
+    $('.parallax').parallax();
     $('.datepicker').pickadate({
         labelMonthNext: 'Sig. Mes',
         labelMonthPrev: 'Ant. Mes',

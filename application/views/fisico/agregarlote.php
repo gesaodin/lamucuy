@@ -52,7 +52,7 @@
         <tr>
           <td valign="top">Cod. Lote:</td>
           <td>
-            <input type="text" id="lote" class="login_input" placeholder="Codigo de lote">
+            <input type="text" id="lote" class="login_input" placeholder="Codigo de lote" value="<?php echo date('Ymd');?>-">
           </td>
           <td valign="top">Detal:</td>
           <td>
@@ -71,7 +71,7 @@
           </td>
           <td valign="top">Serial:</td>
           <td colspan="3">
-            <input type="text" id="serial" class="login_input" style="width: 358px">
+            <input type="text" id="serial" class="login_input" style="width: 358px" value="<?php echo date('Ymd');?>-">
           </td>
         </tr>
 
@@ -84,7 +84,7 @@
         <tr>
           <td valign="top">F. Entrada:</td>
           <td>
-            <input type="date" id="fechaEntrada" class="login_input">
+            <input type="date" id="fechaEntrada" class="login_input" disabled="disabled" value="<?php echo date('Y-m-d');?>">
           </td>
           <td valign="top">Ubicación:</td>
           <td colspan="3">
